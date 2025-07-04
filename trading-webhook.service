@@ -1,0 +1,18 @@
+[Unit]
+Description=Trading Webhook Server
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/trading_webhook_server
+ExecStart=/home/ubuntu/trading_webhook_server/trading_webhook_server
+Restart=always
+RestartSec=5
+Environment=ALPACA_API_KEY=your_api_key_here
+Environment=ALPACA_SECRET_KEY=your_secret_key_here
+Environment=PORT=3000
+Environment=RUST_LOG=info
+
+[Install]
+WantedBy=multi-user.target
